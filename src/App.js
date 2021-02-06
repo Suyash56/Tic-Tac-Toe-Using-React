@@ -20,6 +20,7 @@ const itemArray = new Array(9).fill("empty");
       setIsCross(false);
       setWinMessage("");
       itemArray.fill("empty",0,9);
+      setCount(1);
   }
 
   const checkIsWinner = () => {
@@ -55,13 +56,16 @@ const itemArray = new Array(9).fill("empty");
       {
         setWinMessage(`${itemArray[2]} wins`)
       }
-  
+      else
+      {
+        return false;
+      }
   }
 
   const changeItem = itemNumber => {
       setCount(count + 1)
       console.log(count)
-      if(count === 9)
+      if(count === 9 && !checkIsWinner())
       {
         setWinMessage("Draw")
         return toast("No one win",{type:"info"})
